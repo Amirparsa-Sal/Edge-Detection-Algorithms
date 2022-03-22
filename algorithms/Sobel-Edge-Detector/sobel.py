@@ -5,7 +5,7 @@ import numpy as np
 from scipy.signal import convolve2d
 
 def convolve_and_scale_to_255(image, kernel):
-    convolved_matrix = np.abs(convolve2d(image, kernel, mode='same', boundary='fill', fillvalue=0))
+    convolved_matrix = np.abs(convolve2d(image, kernel, mode='same', boundary='symm'))
     return np.array((convolved_matrix / np.max(convolved_matrix)) * 255, dtype=np.float64)
 
 #Loading the image
