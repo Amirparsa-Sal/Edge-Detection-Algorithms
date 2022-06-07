@@ -95,7 +95,7 @@ def threshold(img, threshold):
     return new_img
 
 def boolean_function_algorithm(img, window_size=3, c=0, global_threshold=0):
-    global boolean_function_image, variance_image
+    global boolean_function_image, variance_image, final_image
     boolean_function_image = perform_boolean_functions(img, window_size=window_size, c = c)
     variance_image = calculate_variance(img, window_size=3)
     global_threshold = int(global_threshold * np.max(variance_image) / 500)
@@ -113,7 +113,7 @@ def on_c_trackbar(val):
     boolean_function_algorithm(img, window_size=3, c=c, global_threshold=thresh)
 
 def on_thresh_trackbar(val):
-    global img, variance_image
+    global img, variance_image, final_image
     c = cv2.getTrackbarPos('C', 'Trackbars')
     variance_image = calculate_variance(img, window_size=3)
     thresh = int(cv2.getTrackbarPos('T', 'Trackbars') * np.max(variance_image) / 500)
@@ -123,10 +123,12 @@ def on_thresh_trackbar(val):
     cv2.imshow('Global Threshold', global_thresholded_image)
     cv2.imshow('Final Image', final_image)
 
-IMAGE_PATH = '../../test-images/lena.png'
+IMAGE_PATH = '../../test-images/lena-noisy.jpeg'
+IMAGE_NAME = IMAGE_PATH.split('/')[-1]
 img = cv2.imread(IMAGE_PATH, 0)
 boolean_function_image = None
 variance_image = None
+final_image = None
 cv2.imshow('Image', img)
 
 cv2.namedWindow('Trackbars')
@@ -141,4 +143,4 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 # # Save image
-# cv2.imwrite('results/' + img_name, gradient_image)
+cv2.imwrite('results/' + IMAGE_NAME, final_image)
