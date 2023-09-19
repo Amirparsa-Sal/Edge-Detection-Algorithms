@@ -20,6 +20,6 @@ In this repository I've implemented some important edge detection algorithms whi
 
 - [Canny Algorithm](./algorithms/Canny-Edge-Detector)
 
-Actually I implemented these algorithms to complete my research called "A Study of Computer Vision Algorithms to Detect Edges in Grayscale Images" which was a part of "Research and Technical Representation" course in AUT.
+Actually, I implemented these algorithms to complete my technical report called "A Study on Edge Detection Algorithms for Grayscale Images" which was done as a part of "Technical Report and Presentation" course at AUT.
 
-My research paper will be uploaded to this repository as soon as possible!
+My technical report is available in `report.pdf` file.
